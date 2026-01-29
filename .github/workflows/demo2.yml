@@ -1,41 +1,50 @@
-name: Simple CI Workflow
- 
+name: Backup Configuration files
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
- 
+  workflow_dispatch: 
+    
+
 jobs:
   demo-job:
-    runs-on: ubuntu-latest
- 
+    runs-on: ubuntu-24.04
+
     steps:
-      # Marketplace Action
-      - name: Checkout repository
-        uses: actions/checkout@v4
- 
-      # Custom shell command
-      - name: Show files in repo
-        run: |
-          echo "Listing repository files:"
-          ls -la
- 
-      - name: Print a message
-        run: echo "GitHub Actions workflow ran successfully!"
-# name: Backup Configuration files
-
-# on:
-#   pull_request:
-#     branches:
-#       - main
-
-# jobs:
-#   backup:
-#     runs-on: ubuntu-24.04
-
-#     steps:
-#     - name: checkout repository
-#       uses: actions/checkout@v4
+    - name: Always runs
+      run: echo "Workflow triggered by ${{ github.event_name }}"
       
-#     - name: Print hello
-#       run: echo "HELLO"
+    - name: run only on psuh
+      if: github.event_name == 'pull_request'
+      run: echo "This setup runs only for pull requests"
+
+    - name: run only on manual trigger
+      if: github.event_name == 'workflow_dispatch'
+      run: echo "This setup runs only when manually triggered"
+
+# name: Simple CI Workflow
+ 
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+ 
+# jobs:
+#   demo-job:
+#     runs-on: ubuntu-latest
+ 
+#     steps:
+#       # Marketplace Action
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+ 
+#       # Custom shell command
+#       - name: Show files in repo
+#         run: |
+#           echo "Listing repository files:"
+#           ls -la
+ 
+#       - name: Print a message
+#         run: echo "GitHub Actions workflow ran successfully!"
