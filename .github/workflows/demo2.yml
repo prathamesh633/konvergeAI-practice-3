@@ -16,7 +16,7 @@ jobs:
     - name: Always runs
       run: echo "Workflow triggered by ${{ github.event_name }}"
       
-    - name: run only on psuh
+    - name: run only on pull requests
       if: github.event_name == 'pull_request'
       run: echo "This setup runs only for pull requests"
 
