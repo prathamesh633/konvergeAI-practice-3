@@ -2,6 +2,8 @@ name: Backup Configuration files
 
 on: push
 
+permissions: 
+  contents: write
 
 jobs:
   backup:
