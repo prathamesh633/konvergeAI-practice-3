@@ -1,17 +1,41 @@
-name: Backup Configuration files
-
+name: Simple CI Workflow
+ 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
-    branches:
-      - main
-
+ 
 jobs:
-  backup:
-    runs-on: ubuntu-24.04
-
+  demo-job:
+    runs-on: ubuntu-latest
+ 
     steps:
-    - name: checkout repository
-      uses: actions/checkout@v4
+      # Marketplace Action
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # Custom shell command
+      - name: Show files in repo
+        run: |
+          echo "Listing repository files:"
+          ls -la
+ 
+      - name: Print a message
+        run: echo "GitHub Actions workflow ran successfully!"
+# name: Backup Configuration files
+
+# on:
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   backup:
+#     runs-on: ubuntu-24.04
+
+#     steps:
+#     - name: checkout repository
+#       uses: actions/checkout@v4
       
-    - name: Print hello
-      run: echo "HELLO"
+#     - name: Print hello
+#       run: echo "HELLO"
