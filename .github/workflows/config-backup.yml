@@ -1,6 +1,9 @@
 name: Backup Configuration files
 
-on: push
+on: 
+  pull_request:
+    branches: 
+      - main
 
 permissions: 
   contents: write
