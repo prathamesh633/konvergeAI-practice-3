@@ -1,9 +1,9 @@
 name: Backup Configuration files
 
-on: 
+on:
   pull_request:
     branches:
-    - main
+      - main
 
 jobs:
   backup:
