@@ -1,3 +1,3 @@
 This is a demo repo
 
-This is the from main branch to feature branch
+This is the from feature branch to main branch
